@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shortcut icon: tuner ring with a play sign. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <path android:fillColor="#FF111214" android:pathData="M24,0a24,24 0,1 1,0 48a24,24 0,1 1,0 -48z" />
+    <path android:fillColor="#FFFFFFFF" android:fillType="evenOdd"
+        android:pathData="M24,9a15,15 0,1 1,0 30a15,15 0,1 1,0 -30zM24,12a12,12 0,1 0,0 24a12,12 0,1 0,0 -24z" />
+    <path android:fillColor="#FFFFFFFF" android:pathData="M21,18.5L30,24L21,29.5z" />
+</vector>

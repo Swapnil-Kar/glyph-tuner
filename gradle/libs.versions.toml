@@ -1,0 +1,8 @@
+[versions]
+# Same tool versions as Nothing's official Glyph Matrix example project.
+agp = "8.10.1"
+kotlin = "2.0.0"
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

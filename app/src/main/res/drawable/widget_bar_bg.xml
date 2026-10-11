@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The widget's pill, in the same grey as the home screen's app icons. The big radius makes the ends fully round. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <solid android:color="#FF1B1B1B" />
+    <corners android:radius="1000dp" />
+</shape>

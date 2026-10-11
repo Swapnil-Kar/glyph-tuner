@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- To hear the guitar. (No internet permission: audio can't leave the phone.) -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- Listening mode: keeps hearing with the screen locked -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+    <!-- Shows the "Glyph Tuner is listening" notification with its Stop button -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- A short buzz when a string is done -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- Required by Nothing to draw on the Glyph Matrix -->
+    <uses-permission android:name="com.nothing.ketchum.permission.ENABLE" />
+
+    <!-- Lets the app talk to Nothing's Glyph system app -->
+    <queries>
+        <package android:name="com.nothing.thirdparty" />
+    </queries>
+
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.GlyphTuner">
+
+        <!-- Nothing developer key ("test" works for development, as in Nothing's example) -->
+        <meta-data
+            android:name="NothingKey"
+            android:value="test" />
+
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            android:exported="true"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <!-- Long-press the icon: Start tuner / Stop tuner -->
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity>
+
+        <!-- First-run tour -->
+        <activity
+            android:name=".TourActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+
+        <!-- How it works (the ? button) -->
+        <activity
+            android:name=".GuideActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+
+        <!-- Settings -->
+        <activity
+            android:name=".SettingsActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+
+        <!-- Invisible screen behind the shortcuts and the quick settings tile -->
+        <activity
+            android:name=".StartActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
+            android:taskAffinity=""
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!-- Listening mode -->
+        <service
+            android:name=".TunerService"
+            android:exported="false"
+            android:foregroundServiceType="microphone" />
+
+        <!-- Quick settings tile -->
+        <service
+            android:name=".TunerTileService"
+            android:exported="true"
+            android:icon="@drawable/ic_notification"
+            android:label="@string/tile_label"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.service.quicksettings.TOGGLEABLE_TILE"
+                android:value="true" />
+        </service>
+
+        <!-- Home screen widget: one tap to start or stop -->
+        <receiver
+            android:name=".TunerWidget"
+            android:exported="false"
+            android:label="@string/widget_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/tuner_widget_info" />
+        </receiver>
+
+        <!-- The Tuner Glyph Toy, picked with the Glyph Button -->
+        <service
+            android:name=".TunerToyService"
+            android:exported="true"
+            tools:ignore="ExportedService">
+            <intent-filter>
+                <action android:name="com.nothing.glyph.TOY" />
+            </intent-filter>
+
+            <meta-data
+                android:name="com.nothing.glyph.toy.name"
+                android:resource="@string/toy_name" />
+            <meta-data
+                android:name="com.nothing.glyph.toy.image"
+                android:resource="@drawable/toy_preview" />
+            <meta-data
+                android:name="com.nothing.glyph.toy.summary"
+                android:resource="@string/toy_summary" />
+            <meta-data
+                android:name="com.nothing.glyph.toy.longpress"
+                android:value="1" />
+        </service>
+
+    </application>
+
+</manifest>

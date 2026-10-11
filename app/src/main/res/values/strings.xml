@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Glyph Tuner</string>
+    <string name="toy_name">Tuner</string>
+    <string name="toy_summary">Guitar tuner. Start it in the Glyph Tuner app, then pluck a string. Long-press to stop.</string>
+    <string name="channel_name">Listening</string>
+    <string name="listening_title">Glyph Tuner is listening</string>
+    <string name="listening_text">Flip your phone and pluck a string.</string>
+    <string name="stop">Stop</string>
+    <string name="tile_label">Tuner</string>
+    <string name="shortcut_start">Start tuner</string>
+    <string name="shortcut_stop">Stop tuner</string>
+    <string name="widget_name">Tuner</string>
+    <string name="widget_description">Tap to start the tuner. Tap again to stop.</string>
+    <string name="widget_start">Start the tuner</string>
+    <string name="widget_stop">Stop the tuner</string>
+    <string name="widget_tap_start">Tap to start</string>
+    <string name="widget_tap_stop">Tap to stop</string>
+</resources>
