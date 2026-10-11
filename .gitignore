@@ -1,0 +1,27 @@
+*.iml
+.gradle/
+.idea/
+.kotlin/
+local.properties
+build/
+app/build/
+captures/
+.externalNativeBuild/
+.cxx/
+.DS_Store
+
+# Nothing's Glyph Matrix SDK licence doesn't allow sharing it, so it never goes on GitHub.
+app/libs/*.aar
+
+# Signing keys and their passwords never go on GitHub.
+*.jks
+*.keystore
+keystore.properties
+
+# Release builds go on the Releases page, not in the code.
+app/release/
+*.apk
+*.aab
+
+# Video work files stay on the laptop.
+videos/
